@@ -3,24 +3,72 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cozy Game</title>
+  <title>Cozy Game Closet</title>
   <style>
     body {
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+      gap: 20px;
       height: 100vh;
       background-color: #f5f5f5;
     }
-    img {
-      image-rendering: pixelated; /* keeps chibi sharp if scaled */
-      width: 128px; /* scale your chibi */
-      height: auto;
+
+    .chibi-container {
+      position: relative;
+      width: 128px;
+      height: 128px;
+    }
+
+    .chibi-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 128px;
+      height: 128px;
+      image-rendering: pixelated;
+    }
+
+    .closet {
+      display: flex;
+      gap: 10px;
+    }
+
+    .closet img {
+      width: 64px;
+      height: 64px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      image-rendering: pixelated;
+      transition: border 0.2s;
+    }
+
+    .closet img:hover {
+      border: 2px solid #ff7f50; /* highlight on hover */
     }
   </style>
 </head>
 <body>
-  <img src="images/chibi_base_clean.png" alt="Chibi">
+
+  <!-- Chibi display -->
+  <div class="chibi-container">
+    <img src="images/chibi.png" alt="Chibi Base">
+    <img id="shirt" src="images/shirt1.png" alt="Chibi Shirt">
+  </div>
+
+  <!-- Closet UI -->
+  <div class="closet">
+    <img src="images/shirt1.png" alt="Shirt 1" onclick="changeShirt('shirt1.png')">
+    <img src="images/shirt2.png" alt="Shirt 2" onclick="changeShirt('shirt2.png')">
+  </div>
+
+  <script>
+    function changeShirt(shirtFile) {
+      document.getElementById('shirt').src = 'images/' + shirtFile;
+    }
+  </script>
+
 </body>
 </html>
 
